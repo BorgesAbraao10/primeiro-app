@@ -1,29 +1,44 @@
-import { useState } from 'react';
-
+import { useState } from "react";
 
 function App(){
-  const [aluno, setAluno] = useState('Sujeito Programador')
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
 
-  function mudarNome(nome) {
-    setAluno(nome)
-  }
 
-  return(
-    <div>
-      <h1>Componente App</h1> <br/>
-      <h2>Olá: {aluno} </h2>
-      <button onClick={ ()=> mudarNome ('Abraão Borges') }>
-        Mudar Nome
-      </button>
-      <br />
-      <br />
-      
-    
-    </div>
-    
-  );
+    return(
+        <div>
+            <h1>Cadastrando Usuario</h1>
+
+            <form>
+                <label>Nome:</label> <br/>
+                <input 
+                placeholder="Digite seu nome"
+                value={nome}
+                onChange={ (e) => setNome(e.target.value)  }/><br />
+
+                <label>E-mail:</label> <br/>
+                <input 
+                placeholder="Digite seu e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}/><br />
+
+                <label>Idade:</label> <br/>
+                <input placeholder="Digite sua idade"></input> <br /> <br />
+
+                <button type="Submit">Registrar</button>
+
+            </form>
+         
+          <br /> <br />
+          
+          <div>
+            <span> Bem vindo: Mateus </span> <br/>
+            <span> Idade: 25 anos </span> <br/>
+            <span> E-mail: test@test.com </span> <br/>
+          </div>
+
+        </div>
+    )
 }
 
 export default App;
-
-
