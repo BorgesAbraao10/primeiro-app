@@ -3,10 +3,22 @@ import { useState } from "react";
 function App(){
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [idade, setIdade] = useState('0');
+  const [idade, setIdade] = useState('');
 
-  function handleRegister() {
-    alert('TESTE')
+  const [user, setUser] = useState({});
+
+  function handleRegister(e) {
+    e.preventDefault();
+
+    alert('Usuario registrado com sucesso!')
+
+    setUser({
+      nome: nome,
+      idade: idade,
+      email: email,
+    })
+
+
   }
 
 
@@ -39,9 +51,9 @@ function App(){
           <br /> <br />
           
           <div>
-            <span> Bem vindo: Mateus </span> <br/>
-            <span> Idade: 25 anos </span> <br/>
-            <span> E-mail: test@test.com </span> <br/>
+            <span> Bem vindo: {user.nome} </span> <br/>
+            <span> Idade: {user.idade} </span> <br/>
+            <span> E-mail: {user.email} </span> <br/>
           </div>
 
         </div>
