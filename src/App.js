@@ -1,60 +1,49 @@
 import { useState } from "react";
 
 function App(){
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [idade, setIdade] = useState('');
+  const [input, setInput] = useState('')
+  const [tarefas, setTarefas] = useState([
+    'Pagar a conta de Luz',
+    'Estudar React JS'
+  ]);
 
-  const [user, setUser] = useState({});
 
   function handleRegister(e) {
     e.preventDefault();
 
-    alert('Usuario registrado com sucesso!')
-
-    setUser({
-      nome: nome,
-      idade: idade,
-      email: email,
-    })
-
+    setTarefas([...tarefas, input]);
+    setInput('');
 
   }
-
 
     return(
         <div>
             <h1>Cadastrando Usuario</h1>
 
             <form onSubmit={handleRegister}>
-                <label>Nome:</label> <br/>
+                <label>Nome da tarefa:</label> <br/>
                 <input 
-                placeholder="Digite seu nome"
-                value={nome}
-                onChange={ (e) => setNome(e.target.value)  }/><br />
+                placeholder="Digite uma tarefa"
+                value={input}
+                onChange={ (e) => setInput(e.target.value)  }
+                /><br />
 
-                <label>E-mail:</label> <br/>
-                <input 
-                placeholder="Digite seu e-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}/><br />
+                <button type="submit">Registrar</button>
 
-                <label>Idade:</label> <br/>
-                <input placeholder="Digite sua idade"
-                value={idade}
-                onChange={(e) => setIdade(e.target.value)}/><br /> <br />
-
-                <button type="Submit">Registrar</button>
+                
+              
 
             </form>
          
           <br /> <br />
           
-          <div>
-            <span> Bem vindo: {user.nome} </span> <br/>
-            <span> Idade: {user.idade} </span> <br/>
-            <span> E-mail: {user.email} </span> <br/>
-          </div>
+          <ul>
+            {
+              tarefas.map( tarefas => (
+                <li key={tarefas}>{tarefas}</li>
+              ))
+            }
+          </ul>
 
         </div>
     )
