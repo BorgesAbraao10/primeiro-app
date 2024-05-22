@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App(){
   const [input, setInput] = useState('')
@@ -6,6 +6,18 @@ function App(){
     'Pagar a conta de Luz',
     'Estudar React JS'
   ]);
+
+  useEffect(()=>{
+    const tarefasStorage = localStorage.getItem('@tarefa');
+
+    if(tarefasStorage){
+      setTarefas(JSON.parse(tarefasStorage))
+    }
+  }, []);
+
+  useEffect(()=>{
+    localStorage.setItem('@tarefa', JSON.stringify(tarefas))
+  }, [tarefas]);
 
 
   function handleRegister(e) {
@@ -29,9 +41,6 @@ function App(){
                 /><br />
 
                 <button type="submit">Registrar</button>
-
-                
-              
 
             </form>
          
