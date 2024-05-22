@@ -4,12 +4,13 @@ function App(){
   const [input, setInput] = useState('')
   const [tarefas, setTarefas] = useState([
     'Pagar a conta de Luz',
-    'Estudar React JS'
+    'Estudar React JS',
+    'Estudar JavaScript'
   ]);
 
-  useEffect(()=>{
+  useEffect(() =>{
     const tarefasStorage = localStorage.getItem('@tarefa');
-
+    
     if(tarefasStorage){
       setTarefas(JSON.parse(tarefasStorage))
     }
@@ -18,7 +19,6 @@ function App(){
   useEffect(()=>{
     localStorage.setItem('@tarefa', JSON.stringify(tarefas))
   }, [tarefas]);
-
 
   function handleRegister(e) {
     e.preventDefault();
